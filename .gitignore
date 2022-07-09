@@ -3,3 +3,10 @@
 ################################################################################
 
 /.vs
+/Contracts/bin/Debug
+/Contracts/obj/Debug
+/Languages/bin/Debug
+/Languages/obj/Debug
+/packages
+/Runtime-Composition/bin
+/Runtime-Composition/obj/Debug
