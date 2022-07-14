@@ -10,14 +10,14 @@ Within the folder App_Start, the main registration for these dependencies are co
 
 The code below registers instances with different names. These names are used to call the individual instances throughout the application that have been registered against the interface ILanguage.
 ```
-            container
-                .RegisterType<ILanguage, English>("en-GB")
-                .RegisterType<ILanguage, Arabic>("ar-SA")
-                .RegisterType<ILanguage, Japanese>("jp-JP");
+container
+  .RegisterType<ILanguage, English>("en-GB")
+  .RegisterType<ILanguage, Arabic>("ar-SA")
+  .RegisterType<ILanguage, Japanese>("jp-JP");
 ```
 
 The dependency factory is responsible for resolving and returning the instance as requested during run time of the application.
 ```
-            container.RegisterFactory<Func<string, ILanguage>>(l => new Func<string, ILanguage>(name => l.Resolve<ILanguage>(name)));
+container.RegisterFactory<Func<string, ILanguage>>(l => new Func<string, ILanguage>(name => l.Resolve<ILanguage>(name)));
 ```
 
