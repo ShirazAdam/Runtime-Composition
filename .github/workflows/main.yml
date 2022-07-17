@@ -4,21 +4,26 @@ on: [push]
  
 jobs:
   build:
- 
     runs-on: windows-latest
- 
+
     steps:
-    - uses: actions/checkout@v1
-      name: Checkout Code
-     
-    - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v1
-       
+    - uses: actions/checkout@v2
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
-     
-    - name: Restore NuGet Packages
+
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+
+    - name: Create Build Directory
+      run: mkdir _build
+
+    - name: Restore Packages
       run: nuget restore Runtime-Composition.sln
- 
-    - name: Build and Publish Web App
-      run: msbuild Runtime-Composition.sln
+
+    - name: Build Solution
+      run: |
+         msbuild.exe Runtime-Composition.sln
