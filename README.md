@@ -21,3 +21,25 @@ The dependency factory is responsible for resolving and returning the instance a
 container.RegisterFactory<Func<string, ILanguage>>(l => new Func<string, ILanguage>(name => l.Resolve<ILanguage>(name)));
 ```
 
+The strategy pattern makes the selection during run-time based on the parameter.
+
+```
+    public class HomeController : Controller
+    {
+        private readonly Func<string, ILanguage> _language;
+
+        public HomeController(Func<string, ILanguage> language)
+        {
+            _language = language;
+        }
+
+        public ActionResult Language(string languageSelect)
+        {
+            var lang = _language(languageSelect);
+
+            var model = new IndexModel { Message = lang.Message };
+
+            return View("Index", model);
+        }
+    }
+```
