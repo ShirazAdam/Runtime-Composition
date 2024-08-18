@@ -1,5 +1,9 @@
 # Runtime-Composition
 
+Updated version using .NET 8 ASP.NET MVC Core available at:
+- https://gitlab.com/ShirazAdam/RuntimeComposition.NET
+- https://github.com/ShirazAdam/RuntimeComposition.NET
+
 A C# .NET Framework 4.8 ASP.NET MVC web application demonstrating the concept of run time composition.
 
 The design behind this pattern is that the dependency graph is created during runtime, on a per client request basis. The composition is triggered through the context of the application's operating environment and the information received by the application. Information such as URI, environment variables, server technology, routing, decision trees, machine learning (ML) models, cache, cookies, locale, internet protocol (IP) address, internet service provider (ISP), host operationg system (OS), guest OS, browser, etc... can all be used to compose an application's dependency graph in real-time.
